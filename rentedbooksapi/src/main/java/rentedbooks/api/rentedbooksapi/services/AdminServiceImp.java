@@ -12,22 +12,21 @@ public class AdminServiceImp implements AdminService {
 	@Autowired
 	AdminRepository adminRepo;
 
+
 	@Override
-	public boolean Login(String password , Long Id) {
-		// check if the password is the same as the one setting in the 
-		Admin admin = adminRepo.findById(Id).get();
-		return admin.getPassword().equals(password);
-		
-		
+	public void register(String password, String id) {
+		Admin admin = new Admin();
+		admin.setId(id);
+		// the password must be hashed first
+		admin.setPassword(password);
+		adminRepo.save(admin);		
 	}
 
 	@Override
-	public void register(String password, Long id) {
-		Admin admin = new Admin();
-		admin.setId(id);
-		admin.setPassword(password);
-		adminRepo.save(admin);
-		
+	public Admin getAdmin() {
+		// TODO Auto-generated method stub
+		Admin admin = adminRepo.findAll().get(0);
+		return admin;
 	}
 	
 

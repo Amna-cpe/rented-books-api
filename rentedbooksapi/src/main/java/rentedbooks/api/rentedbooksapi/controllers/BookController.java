@@ -36,6 +36,12 @@ public class BookController {
 		return new ResponseEntity<ArrayList<Book>>(books,HttpStatus.OK);		
 	}
 	
+	@GetMapping("/hello")
+	public ResponseEntity<String> hello(){
+		
+		return new ResponseEntity<String>("hello??",HttpStatus.OK);		
+	}
+	
 	@PostMapping("/add-book")
 	public ResponseEntity<String> add(
 			@RequestParam("image") MultipartFile image ,

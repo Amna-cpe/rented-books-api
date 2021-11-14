@@ -13,6 +13,7 @@ import lombok.Setter;
 public class Admin {
 
     @Id
-    private long id;
+    private String id;
     private String password;
+    
 }

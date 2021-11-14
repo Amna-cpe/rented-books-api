@@ -1,14 +1,15 @@
 package rentedbooks.api.rentedbooksapi.services;
 
-import org.springframework.stereotype.Service;
-
+import rentedbooks.api.rentedbooksapi.model.Admin;
 
 public interface AdminService {
 	
 	
 
-	public boolean Login(String password, Long Id);
+	
 
-	public void register(String password, Long id);
+	public void register(String password, String id);
+	
+	public Admin getAdmin();
 
 }
