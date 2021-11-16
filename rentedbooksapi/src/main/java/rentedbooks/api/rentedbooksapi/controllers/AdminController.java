@@ -9,6 +9,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +29,8 @@ import rentedbooks.api.rentedbooksapi.utills.JwtUtill;
 @RequestMapping("/api/v1")
 public class AdminController {
 	
+	PasswordEncoder passwordEncoder;
+	
 	@Autowired
 	AdminService adminService;
 	
@@ -44,19 +48,12 @@ public class AdminController {
 	
 	@PostMapping("/authenticate")
 	public ResponseEntity<?> Authenticate(@RequestBody Admin admin) throws Exception {
-		
-		System.out.println("the username in con "+admin.getId());
-	
+System.out.println("the password is "+ admin.getPassword());
 		try {
-			if(admin.getId()!=null && admin.getPassword()!=null)
-			{
+			
 				authenticationManager.authenticate(	
 					new UsernamePasswordAuthenticationToken(admin.getId() , admin.getPassword()));
-			}
-			else {
-				throw new Exception("ID or password must not be empty");
-				
-			}
+		
 			
 			
 		}
